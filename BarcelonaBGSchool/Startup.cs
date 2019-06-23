@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using BarcelonaBGSchool.Models;
+using MySql.Data.EntityFrameworkCore;
 
 namespace BarcelonaBGSchool
 {
@@ -31,7 +32,7 @@ namespace BarcelonaBGSchool
             });
 
             services.AddDbContext<BarcelonaBGSchoolContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("BarcelonaBGSchoolContext")));
+                    options.UseMySQL(Configuration.GetConnectionString("BarcelonaBGSchoolContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,6 +18,7 @@ namespace BarcelonaBGSchool.Controllers
         public SubjectsController(BarcelonaBGSchoolContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();
         }
 
         // GET: api/Subjects
