@@ -17,15 +17,14 @@ namespace BarcelonaBGSchool.Controllers
 
         public SubjectsController(BarcelonaBGSchoolContext context)
         {
-            _context = context;
-            _context.Database.EnsureCreated();
+            _context = context;     
         }
 
         // GET: api/Subjects
         [HttpGet]
         public IEnumerable<Subject> GetSubject()
         {
-            return _context.Subject;
+            return _context.Subjects;
         }
 
         // GET: api/Subjects/5
@@ -37,7 +36,7 @@ namespace BarcelonaBGSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
 
             if (subject == null)
             {
@@ -91,7 +90,7 @@ namespace BarcelonaBGSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Subject.Add(subject);
+            _context.Subjects.Add(subject);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSubject", new { id = subject.Id }, subject);
@@ -106,13 +105,13 @@ namespace BarcelonaBGSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return NotFound();
             }
 
-            _context.Subject.Remove(subject);
+            _context.Subjects.Remove(subject);
             await _context.SaveChangesAsync();
 
             return Ok(subject);
@@ -120,7 +119,7 @@ namespace BarcelonaBGSchool.Controllers
 
         private bool SubjectExists(Guid id)
         {
-            return _context.Subject.Any(e => e.Id == id);
+            return _context.Subjects.Any(e => e.Id == id);
         }
     }
 }

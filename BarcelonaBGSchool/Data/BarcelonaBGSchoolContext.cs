@@ -9,6 +9,8 @@ namespace BarcelonaBGSchool.Models
         {
         }
 
-        public DbSet<Subject> Subject { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }
